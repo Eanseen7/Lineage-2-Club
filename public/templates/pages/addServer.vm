@@ -1,0 +1,162 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
+<style type="text/css">
+    body {
+        background-image: url(/static/img/img6.jpg);
+        background-attachment: fixed;
+    }
+</style>
+
+<div class="ui container">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <div class="ui segment">
+                <form class="ui form" action="/server/add" method="post">
+                    <div class="field">
+                        <label>Сайт сервера (Без http://)</label>
+						#springFormInput("server.domain" 'placeholder="Сайт сервера (Без http://)"')
+                    </div>
+					#springBind("server.domain")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <label>Описание</label>
+						#springFormTextarea("server.description")
+                    </div>
+					#springBind("server.description")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <label>Версия</label>
+                        <div class="ui selection dropdown">
+							#springFormHiddenInput("server.version")
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Выберите хроники</div>
+                            <div class="menu">
+								#foreach($version in $versions)
+                                    <div class="item" data-value="$version.id">$version.name</div>
+								#end
+                            </div>
+                        </div>
+                    </div>
+					#springBind("server.version")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <label>Рейты</label>
+						#springFormInput("server.rate" 'placeholder="Рейты"')
+                    </div>
+					#springBind("server.domain")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <label>Дата открытия</label>
+						#springFormInput("server.date")
+                    </div>
+					#springBind("server.date")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            Неверное значение
+                        </div>
+					#end
+
+                    <div class="field">
+                        <div class="g-recaptcha" data-sitekey="$recaptchaSiteKey"></div>
+                    </div>
+					#if($!recaptchaError)
+                        <div class="ui visible error message">
+                            <ul class="list">
+                                <li>$!recaptchaError</li>
+                            </ul>
+                        </div>
+					#end
+
+                    <button class="ui green button" type="submit">Добавить</button>
+                </form>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui green message">
+				<strong>Партнер</strong>
+                <br><br>Сервер помечается специльным значком
+                <br><br><strong>Как стать партнером ?</strong>
+                <br><br>Для этого нужно добавить на вашем форуме <strong>"Раздел-Ссылку"</strong> с текстом <strong>"Lineage 2 Town - Найди свой сервер"</strong> и <strong><a href="/mail/send">написать нам, указав ссылку на форум проекта</a></strong>
+                <br><br><strong>Как это выглядит ?</strong>
+                <br><br><img src="http://dl1.joxi.net/drive/2016/07/25/0009/3587/622083/83/2dc8a7e986.png">
+			</div>
+            <div class="ui orange message">
+                <strong>VIP</strong>
+                <br><br>Сервер помечается специльным значком и закрепляется вверху списка
+                <br><br><strong>Как получить VIP ?</strong>
+                <br><br>Перейти в <strong><a href="/pay/vip">специальный раздел</a></strong>
+                <br><br><strong>Как это выглядит ?</strong>
+                <br><br><img src="http://dl2.joxi.net/drive/2016/07/28/0009/3587/622083/83/c3c0556bd9.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.dropdown').dropdown();
+</script>
+
+<script>
+    $( function() {
+        $( "#date" ).datepicker();
+        $( "#format" ).on( "change", function() {
+            $( "#date" ).datepicker();
+        });
+    } );
+</script>
+
+<div class="ui modal small success">
+    <i class="close icon"></i>
+    <div class="header">
+        Уведомление
+    </div>
+    <div class="image content">
+        <div class="description">
+            Сервер успешно добавлен
+        </div>
+    </div>
+</div>
+
+#if($!success)
+<script>
+    $('.success').modal('show');
+</script>
+#end

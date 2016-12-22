@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <title>Вспомнить пароль</title>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/semantic/dist/semantic.css">
+
+    <script src="/static/semantic/dist/semantic.js"></script>
+
+    <style type="text/css">
+        body {
+            background-image: url(/static/img/img2.jpg);
+            background-attachment: fixed;
+        }
+        body > .grid {
+            height: 100%;
+        }
+        .column {
+            max-width: 450px;
+        }
+    </style>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <form class="ui large form">
+            <div class="ui stacked segment">
+                <div class="field">
+                    <div class="ui left icon input">
+                        <i class="user icon"></i>
+                        <input type="text" name="email" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="field" align="center">
+                    <div class="g-recaptcha" data-sitekey="$recaptchaSiteKey"></div>
+                </div>
+                <div class="ui fluid large teal submit button">Вспомнить</div>
+            </div>
+            <div class="ui error message"></div>
+        </form>
+        <div class="ui message">
+            Вспомнили пароль ? <a href="/enter/auth">Войти</a>
+        </div>
+        <div class="ui message">
+            Нет аккаунта ? <a href="/enter/reg">Регистрация</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

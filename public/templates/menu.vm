@@ -1,0 +1,19 @@
+<div class="ui inverted menu">
+    <div class="ui container">
+        <a href="/" class="item">Главная</a>
+        <a href="/top" class="item">Популярное</a>
+        <a href="/server/add" class="item">Добавить сервер</a>
+        <a href="/pay/vip" class="item">Получить VIP</a>
+        <a href="/mail/send" class="item">Контакты</a>
+		#if($!mAccount.username)
+##            <a href="/cp" class="item">Личный кабинет</a>
+			#if($!mAccount.admin)
+                <a href="/admin" class="item">Админка</a>
+			#end
+            <a href="/enter/logout" class="item">Выход</a>
+##		#else
+##            <a href="/enter/auth" class="item">Вход</a>
+##            <a href="/enter/reg" class="item">Регистрация</a>
+		#end
+    </div>
+</div>

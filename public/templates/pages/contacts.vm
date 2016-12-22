@@ -1,0 +1,71 @@
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<div class="ui container">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <div class="ui segment">
+                <form class="ui form" action="/mail/send" method="post">
+                    <div class="field">
+						#springFormInput("sendMail.email" 'placeholder="Ваш Email"')
+                    </div>
+					#springBind("sendMail.email")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <label>Сообщение</label>
+						#springFormTextarea("sendMail.content")
+                    </div>
+					#springBind("sendMail.content")
+					#if($status.errorMessages.size() > 0)
+                        <div class="ui visible error message">
+                            <ul class="list">
+								#foreach($e in $status.errorMessages)
+                                    <li>${e}</li>
+								#end
+                            </ul>
+                        </div>
+					#end
+
+                    <div class="field">
+                        <div class="g-recaptcha" data-sitekey="$recaptchaSiteKey"></div>
+                    </div>
+					#if($!recaptchaError)
+                        <div class="ui visible error message">
+                            <ul class="list">
+                                <li>$!recaptchaError</li>
+                            </ul>
+                        </div>
+					#end
+
+                    <button class="ui green button" type="submit">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui modal small success">
+    <i class="close icon"></i>
+    <div class="header">
+        Уведомление
+    </div>
+    <div class="image content">
+        <div class="description">
+            Ваше сообщение успешно отправлено, в ближайшее время мы с Вами свяжемся
+        </div>
+    </div>
+</div>
+
+#if($!success)
+<script>
+    $('.success').modal('show');
+</script>
+#end

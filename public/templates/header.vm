@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>$title</title>
+
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="/static/semantic/dist/semantic.css">
+
+	<script src="/static/semantic/dist/semantic.js"></script>
+
+    <meta name="keywords" content="$keywordsAdd">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="google-site-verification" content="Nm3fz285_TnamJ6Tg46XzYvSYhVtGLPPnnv9_mpNvQg" />
+    <meta name="unitpay-verification" content="f79921bbae40a577928b76d2fc3edc"/>
+</head>
+<body>

@@ -1,0 +1,372 @@
+<style type="text/css">
+    body {
+        background-image: url(/static/img/img4.jpg);
+        background-attachment: fixed;
+    }
+</style>
+
+<div class="ui container">
+    <div class="ui one column centered grid">
+        <div class="column">
+            <div class="ui segment">
+                <div class="ui selection dropdown">
+                    <input type="hidden" name="version" id="version" value="0">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Выберите хроники</div>
+                    <div class="menu">
+						#foreach($version in $versions)
+                            <div class="item" data-value="$version.id">$version.name</div>
+						#end
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ui container">
+    <div class="ui grid">
+        <div class="eight wide column">
+            <div class="ui segment">
+                <div class="ui red message">
+                    <div class="header">
+                        Открытие сегодня
+                    </div>
+                </div>
+                <table class="ui single line table">
+                    <thead>
+                    <tr>
+                        <th width="40%">Название</th>
+                        <th width="25%">Версия</th>
+                        <th width="10%">Рейты</th>
+                        <th width="5%"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="opentoday">
+						#foreach($server in $opentoday)
+							#if($server.vip)
+                            	<tr class="positive">
+                            	    <td>
+                                        <i class="icon checkmark"></i>
+                                    	<a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server"><strong>$server.domain</strong></a>
+									</td>
+                            	    <td>
+                                        <strong>$server.version</strong>
+									</td>
+                            	    <td>
+										x$server.rate
+									</td>
+									<td>
+                                    	<a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+									</td>
+                            	</tr>
+							#else
+                           		<tr>
+                           		    <td>
+										#if($server.partner)
+                                            <i class="thumbs up icon"></i>
+										#end
+										<a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server">$server.domain</a>
+									</td>
+                                    <td>
+                                        <strong>$server.version</strong>
+                                    </td>
+                                    <td>
+                                        x$server.rate
+                                    </td>
+                                    <td>
+                                        <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                    </td>
+                           		</tr>
+							#end
+						#end
+                    </tbody>
+                </table>
+
+                <div class="ui orange message">
+                    <div class="header">
+                        Открытие завтра
+                    </div>
+                </div>
+                <table class="ui single line table">
+                    <thead>
+                    <tr>
+                        <th width="40%">Название</th>
+                        <th width="25%">Версия</th>
+                        <th width="10%">Рейты</th>
+                        <th width="5%"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="opentomorrow">
+						#foreach($server in $opentomorrow)
+							#if($server.vip)
+                            <tr class="positive">
+                                <td>
+                                    <i class="icon checkmark"></i>
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server"><strong>$server.domain</strong></a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#else
+                            <tr>
+                                <td>
+									#if($server.partner)
+                                        <i class="thumbs up icon"></i>
+									#end
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server">$server.domain</a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#end
+						#end
+					</tbody>
+                </table>
+
+                <div class="ui blue message">
+                    <div class="header">
+                        Скоро откроются
+                    </div>
+                </div>
+                <table class="ui single line table">
+                    <thead>
+                    <tr>
+                        <th width="40%">Название</th>
+                        <th width="25%">Версия</th>
+                        <th width="10%">Рейты</th>
+                        <th width="20%">Дата старта</th>
+                        <th width="5%"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="notopen">
+						#foreach($server in $notopen)
+							#if($server.vip)
+                            <tr class="positive">
+                                <td>
+                                    <i class="icon checkmark"></i>
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server"><strong>$server.domain</strong></a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+								<td>$server.date</td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#else
+                            <tr>
+                                <td>
+									#if($server.partner)
+                                        <i class="thumbs up icon"></i>
+									#end
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server">$server.domain</a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+                                <td>$server.date</td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#end
+						#end
+					</tbody>
+                </table>
+            </div>
+        </div>
+        <div class="eight wide column">
+            <div class="ui segment">
+                <div class="ui green message">
+                    <div class="header">
+                        Недавно открылись
+                    </div>
+                </div>
+                <table class="ui single line table">
+                    <thead>
+                    <tr>
+                        <th width="40%">Название</th>
+                        <th width="25%">Версия</th>
+                        <th width="10%">Рейты</th>
+                        <th width="20%">Дата старта</th>
+                        <th width="5%"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="open">
+						#foreach($server in $open)
+							#if($server.vip)
+                            <tr class="positive">
+                                <td>
+                                    <i class="icon checkmark"></i>
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server"><strong>$server.domain</strong></a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+                                <td>$server.date</td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#else
+                            <tr>
+                                <td>
+									#if($server.partner)
+                                        <i class="thumbs up icon"></i>
+									#end
+                                    <a href="http://$server.domain" target="_blank" rel="nofollow" data-content="$server.description" data-variation="wide" class="server">$server.domain</a>
+                                </td>
+                                <td>
+                                    <strong>$server.version</strong>
+                                </td>
+                                <td>
+                                    x$server.rate
+                                </td>
+                                <td>$server.date</td>
+                                <td>
+                                    <a href="/server/show/$server.id" target="_blank" title="Комментарии"><i class="comments icon"></i></a>
+                                </td>
+                            </tr>
+							#end
+						#end
+					</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.dropdown').dropdown({
+        onChange: function () {
+            reload();
+        }
+    });
+</script>
+
+<script>
+    function getServers(type) {
+        var version = document.getElementById('version').value;
+        var uri = '/api/getServers/' + type + '/' + version;
+        $.ajax({
+            url: uri,
+            dataType: 'json',
+            type: "GET"
+        })
+                .done(function (data) {
+                    var parent;
+
+                    switch (type) {
+                        case 1:
+                            parent = document.getElementById('opentoday');
+                            break
+                        case 2:
+                            parent = document.getElementById('opentomorrow');
+                            break
+                        case 3:
+                            parent = document.getElementById('notopen');
+                            break
+                        case 4:
+                            parent = document.getElementById('open');
+                            break
+                    }
+
+                    parent.innerHTML = '';
+
+                    $.each(data, function (index, element) {
+                        eTr = document.createElement('tr');
+
+                        eTd = document.createElement("td");
+                        if (element.vip) {
+                            eTr.setAttribute("class", "positive");
+                            eTd.innerHTML += '<i class="icon checkmark"></i>';
+                        }
+                        if (element.partner) {
+                            eTd.innerHTML += '<i class="thumbs up icon"></i>';
+                        }
+
+                        if (element.vip) {
+                            eTd.innerHTML += '<a href="http://' + element.domain + '" target="_blank" rel="nofollow" data-content="' + element.description + '" data-variation="wide" class="server"><strong>' + element.domain + '</strong></a>';
+                        }
+                        else {
+                            eTd.innerHTML += '<a href="http://' + element.domain + '" target="_blank" rel="nofollow" data-content="' + element.description + '" data-variation="wide" class="server">' + element.domain + '</a>';
+                        }
+                        eTr.appendChild(eTd);
+
+                        eTd = document.createElement("td");
+                        eTd.innerHTML = '<strong>' + element.version + '</strong>';
+                        eTr.appendChild(eTd);
+
+                        eTd = document.createElement("td");
+                        eTd.innerText = 'x' + element.rate;
+                        eTr.appendChild(eTd);
+
+                        if (type == 3 || type == 4) {
+                            eTd = document.createElement("td");
+                            eTd.innerText = element.date;
+                            eTr.appendChild(eTd);
+                        }
+
+                        eTd = document.createElement("td");
+                        eTd.innerHTML = '<a href="/server/show/' + element.id + '" target="_blank" title="Комментарии"><i class="comments icon"></i></a>';
+                        eTr.appendChild(eTd);
+
+                        parent.appendChild(eTr);
+
+                        $('a').popup();
+                    });
+                });
+        return false;
+    }
+</script>
+
+<script>
+    $('a').popup();
+</script>
+<script>
+    function reload() {
+        getServers(1);
+        getServers(2);
+        getServers(3);
+        getServers(4);
+    }
+</script>
+
+<div class="ui container">
+    <div class="ui one column centered grid">
+        <div class="column">
+            <div class="ui blue message">
+                <strong>Lineage 2 Town</strong> - проект, благодаря которому вы сможете найти <strong>сервер
+                lineage</strong>, почитать о нем отзывы, добавить свои.<br>
+                Каждый день в наш список добавляются новые <strong>lineage 2 сервера</strong>, благодаря этому вы всегда
+                будете в курсе последних событий в мире <strong>lineage 2</strong><br>
+                У нас вы сможете найти сервера следующих хроник: <strong>$keywords</strong>
+            </div>
+        </div>
+    </div>
+</div>

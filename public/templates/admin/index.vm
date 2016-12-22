@@ -1,0 +1,43 @@
+<div class="ui container">
+    <div class="ui grid">
+        <div class="sixteen wide column">
+            <div class="ui segment">
+                <a href="/admin/restart" class="ui red button">Рестарт</a>
+				<br>
+                <table class="ui single line table" width="200">
+                    <thead>
+                    <tr>
+                        <th width="5%">ID</th>
+                        <th width="20%">Сайт</th>
+                        <th width="10%">Версия</th>
+                        <th width="10%">Рейт</th>
+                        <th width="10%">Дата</th>
+                        <th width="5%"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+						#foreach($server in $servers)
+                        <tr>
+                            <td>$server.id</td>
+                            <td><a href="http://$server.domain" target="_blank" data-content="$server.description" data-variation="wide">$server.domain</a></td>
+                            <td>$server.version</td>
+                            <td>$server.rate</td>
+                            <td>$server.date</td>
+                            <td>
+                                <a href="/admin/success/$server.id" onclick=""><i class="send icon"></i></a>
+                                <a href="/admin/fail/$server.id"><i class="ban icon"></i></a>
+                            </td>
+                        </tr>
+						#end
+                    </tbody>
+                </table>
+            </div>
+        </div>
+	</div>
+</div>
+
+<script>
+    $('a')
+            .popup()
+    ;
+</script>

@@ -1,0 +1,9 @@
+<list>
+	<rate id="0" name="Все рейты"/>
+	<rate id="1" name="x1-x10"/>
+	<rate id="2" name="x10-x20"/>
+	<rate id="3" name="x20-x50"/>
+	<rate id="4" name="x50-x100"/>
+	<rate id="5" name="x500-x999"/>
+	<rate id="6" name="x1000+"/>
+</list>

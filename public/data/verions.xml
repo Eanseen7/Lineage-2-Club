@@ -1,0 +1,24 @@
+<list>
+	<version id="0" name="Все версии"/>
+	<version id="1" name="C1-C5"/>
+	<version id="2" name="Interlude"/>
+	<!--<version id="3" name="The Kamael"/>-->
+	<!--<version id="4" name="Hellbound"/>-->
+	<version id="5" name="Gracia Part 1-2"/>
+	<version id="6" name="Gracia Final"/>
+	<version id="7" name="Gracia Epilogue"/>
+	<version id="8" name="Freya"/>
+	<version id="9" name="High Five"/>
+	<!--<version id="10" name="Awakening"/>-->
+	<!--<version id="11" name="Harmony"/>-->
+	<!--<version id="12" name="Tauti"/>-->
+	<!--<version id="13" name="Glory Days"/>-->
+	<version id="14" name="Lindvior"/>
+	<!--<version id="15" name="Epeisodion"/>-->
+	<version id="16" name="Ertheia"/>
+	<version id="17" name="Infinite Odyssey"/>
+	<version id="18" name="Hymn of the Soul"/>
+	<version id="19" name="Helios"/>
+	<version id="20" name="Grand Crusade"/>
+	<version id="50" name="Classic"/>
+</list>

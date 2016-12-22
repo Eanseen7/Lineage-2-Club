@@ -1,0 +1,4 @@
+#parse("$header")
+#parse("$menu")
+#parse("$page")
+#parse("$footer")

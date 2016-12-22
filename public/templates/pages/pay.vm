@@ -1,0 +1,43 @@
+<div class="ui container">
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui segment">
+                <form class="ui form" id="form">
+                    <div class="field">
+                        <input type="text" id="serverId" placeholder="Id сервера">
+                    </div>
+                    <button class="ui green button" type="submit">Купить</button>
+                </form>
+            </div>
+        </div>
+        <div class="twelve wide column">
+            <div class="ui segment">
+				<strong>Как узнать Id сервера ?</strong>
+				<br><br>Переходим на страницу комментариев
+                <br><br><img src="http://dl2.joxi.net/drive/2016/07/25/0009/3587/622083/83/980b791c5d.png"/>
+                <br><br>Смотрим на браузерную строку (В данном случае 10 это и есть Id сервера)
+                <br><br><img src="http://dl2.joxi.net/drive/2016/07/25/0009/3587/622083/83/d39a87b0d6.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#form').submit(function () {
+        var serverId = document.getElementById('serverId').value;
+        var uri = '/pay/init/' + serverId;
+
+        $.ajax({
+            url: uri,
+            type: "GET"
+        })
+                .done(function (data) {
+                    switch (data.type) {
+                        case 'SUCCESS':
+                            window.location = data.message;
+                            break;
+                    }
+                });
+        return false;
+    });
+</script>

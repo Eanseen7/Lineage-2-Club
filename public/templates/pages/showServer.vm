@@ -1,0 +1,55 @@
+<style type="text/css">
+    body {
+        background-image: url(/static/img/img5.jpg);
+        background-attachment: fixed;
+    }
+</style>
+
+<div class="ui container">
+    <div class="ui grid">
+        <div class="eleven wide column">
+            <div class="ui segment">
+                <div class="ui blue message">
+                    <div class="header">
+                        <a href="http://$server.domain" target="_blank" rel="nofollow">$server.domain</a>
+                    </div>
+                </div>
+                <div class="ui yellow message">
+                    <div class="header">
+                        <strong>$server.version x$server.rate</strong>
+                    </div>
+                </div>
+                <div class="ui green message">
+                    <div class="header">
+                        Открытие: $server.date
+                    </div>
+                </div>
+                <div class="ui brown message">
+                    <div class="header">
+						$server.description
+                    </div>
+                </div>
+            </div>
+            <div class="ui segment">
+                <div id="hypercomments_widget"></div>
+                <script type="text/javascript">
+                    _hcwp = window._hcwp || [];
+                    _hcwp.push({widget:"Stream", widget_id: 78406});
+                    (function() {
+                        if("HC_LOAD_INIT" in window)return;
+                        HC_LOAD_INIT = true;
+                        var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+                        var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+                        hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/78406/"+lang+"/widget.js";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hcc, s.nextSibling);
+                    })();
+                </script>
+                <a href="http://hypercomments.com" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+            </div>
+        </div>
+        <div class="five wide column">
+			<div id="vk_post_-108459301_245"></div><script type="text/javascript">  (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//vk.com/js/api/openapi.js?125"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'vk_openapi_js'));  (function() {    if (!window.VK || !VK.Widgets || !VK.Widgets.Post || !VK.Widgets.Post("vk_post_-108459301_245", -108459301, 245, 'gCY8XJXHL0OP934-Sez9RU_VpKZo', {redesign: 1, width: 400})) setTimeout(arguments.callee, 50);  }());</script>
+        </div>
+    </div>
+</div>
