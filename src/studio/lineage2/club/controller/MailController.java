@@ -56,7 +56,7 @@ import static studio.lineage2.club.controller.SiteController.addAttributes;
 		sb.append("Email: ").append(sendMail.getEmail()).append("<br><br>");
 		sb.append("Сообщение: ").append("<br><br>").append(sendMail.getContent());
 
-		mailUtil.send("eanseen@gmail.com", "Info", sb.toString());
+		mailUtil.send("e@gmail.com", "Info", sb.toString());
 
 		model.addAttribute("success", true);
 		return index(model);

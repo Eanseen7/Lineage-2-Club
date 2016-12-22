@@ -118,7 +118,7 @@ import static studio.lineage2.club.controller.SiteController.addAttributes;
 		StringBuilder sb = new StringBuilder();
 		sb.append("Новый сервер ожидает модерации");
 
-		mailUtil.send("eanseen@gmail.com", "New Server", sb.toString());
+		mailUtil.send("e@gmail.com", "New Server", sb.toString());
 
 		model.addAttribute("success", true);
 		return index(model);
